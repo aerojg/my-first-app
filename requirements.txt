@@ -1,6 +1,8 @@
 streamlit
-finance-datareader
-ccxt
-feedparser
-requests
 pandas
+pandas_datareader
+yfinance
+pytz
+requests
+beautifulsoup4
+ccxt
