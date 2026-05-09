@@ -2,9 +2,12 @@ import streamlit as st
 from data_fetcher import get_stock_data, get_crypto_data, get_weather_data, get_trending_keywords
 from news_scraper import get_ai_news, get_ai_trends
 import pandas as pd
-
+from datetime import datetime, timedelta, timezone
 # 페이지 설정
 st.set_page_config(page_title="비트와 가든, 굿모닝 리포트", layout="wide")
+# 한국 시간 맞추기 (영국 시간 + 9시간)
+KST = timezone(timedelta(hours=9))
+current_time = datetime.now(KST)
 
 # 커스텀 CSS (프리미엄 및 고대비 디자인)
 st.markdown("""
@@ -148,7 +151,7 @@ st.markdown("""
 st.markdown("<h1 class='title-text'>🌿 비트와 가든, 굿모닝 리포트 ☀️</h1>", unsafe_allow_html=True)
 
 # 자료검색 시점 표시 (상단)
-now = pd.Timestamp.now()
+now = pd.Timestamp.now(tz='Asia/Seoul')
 days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 day_of_week = days[now.weekday()]
 search_time = now.strftime('%y.%m.%d %H:%M') + f" {day_of_week}"
@@ -251,7 +254,7 @@ with col2:
             with k_cols[1]: st.metric("KOSDAQ", f"{stock_data['KR']['KOSDAQ']['current']:,.2f}", f"{stock_data['KR']['KOSDAQ']['change_pct']:+.2f}%")
 
     # 가상화폐
-    st.markdown('<div class="section-header">₿ Bitcoin & Premium</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">₿ Bitcoin & Kimchi Premium</div>', unsafe_allow_html=True)
     if crypto_data:
         st.markdown('<div class="stCard" style="padding:15px !important; margin-bottom:0 !important;">', unsafe_allow_html=True)
         c_cols = st.columns(2)
