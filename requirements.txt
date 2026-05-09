@@ -1,0 +1,6 @@
+streamlit
+finance-datareader
+ccxt
+feedparser
+requests
+pandas
