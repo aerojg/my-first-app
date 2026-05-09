@@ -2,6 +2,7 @@ streamlit
 pandas
 pandas_datareader
 yfinance
+finance-datareader
 pytz
 requests
 beautifulsoup4
